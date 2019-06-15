@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
     <title>Crystal Collector</title>
 </head>
 <!-- <body background="assets/images/tile-background-3.jpg"> -->
@@ -35,7 +36,7 @@
     </div>
 <div id="targetarea">
     <div id="targetNumberBox">
-        Target Number: <span id="computerNumber"></span>
+        Target Number: <span id="computerNumber">hello</span>
     </div>
 
     <div id="winLossBox">
@@ -52,13 +53,15 @@
 <!-- We'll always save the day! -->
 <div id="crystalgems">
     <!-- Garnet -->
-        <input type="image" src="assets/images/garnet.png" class="gembutton" id="garnet"/>
+        <input type="image" src="assets/images/garnet.png" data-number="gemnumber1" class="gembutton" id="garnet"/>
     <!-- Amethyst -->
-        <input type="image" src="assets/images/amethyst.png" class="gembutton" id="amethyst"/>
+        <input type="image" src="assets/images/amethyst.png" data-number="gemnumber2" class="gembutton" id="amethyst"/>
     <!-- Pearl -->
-        <input type="image" src="assets/images/pearl.png" class="gembutton" id="pearl"/>
+        <input type="image" src="assets/images/pearl.png" data-number="gemnumber3" class="gembutton" id="pearl"/>
     <!-- AND STEVEN!!! -->
-        <input type="image" src="assets/images/diamond.png" class="gembutton" id="steven"/> 
+        <input type="image" src="assets/images/diamond.png" data-number="gemnumber4" class="gembutton" id="diamond"/> 
+
+<!-- <button class="letter-button letter letter-button-color" data-letter="B">B</button> -->
 
 </div>
 
@@ -73,5 +76,7 @@
         <span id="totalscore"></span>
     </div>
 
+
+    <script src="assets/javascript/game.js"></script>
 </body>
 </html>
