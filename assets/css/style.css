@@ -1,0 +1,69 @@
+#titlecard {
+    background:orangered;
+    vertical-align:center;
+    text-align:center;
+    color:white;
+    font-size:28px;
+    width:33%;
+    margin: 5px 5px 5px 5px;
+    height:50px;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
+
+#instructions {
+    background:tan;
+    vertical-align:center;
+    color:green;
+    font-size:18px;
+    width:50%;
+    margin: 5px 5px 5px 5px;
+    padding-top: 10px;
+    padding-bottom:10px;
+}
+
+#targetarea {
+    display:flex;
+}
+
+#crystalgems {
+    display:flex;
+}
+
+.gembutton {
+    /* float:left; */
+    background-color:white;
+    margin:10px;
+}
+
+#targetNumberBox {
+    background-color:lightgreen;
+    width: 300px;
+    height:150px;
+}
+
+#winLossBox {
+    background-color:lightskyblue;
+    color:black;
+    padding-top:10px;
+    padding-bottom:50px;
+    width: 100px;
+}
+
+#totalScoreBox {
+    background-color:teal;
+    width: 400px;
+    height:100px;
+    color:white;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+    /* float: left; */
+    /* width: 33.33%; */
+
+    padding: 5px;
+    margin:5px;
+  }
+  
