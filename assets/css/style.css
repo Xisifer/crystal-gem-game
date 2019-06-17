@@ -16,7 +16,7 @@
     background:tan;
     vertical-align:center;
     color:green;
-    font-size:18px;
+    font-size:20px;
     width:50%;
     margin: 5px 5px 5px 5px;
     padding-top: 10px;
@@ -41,6 +41,8 @@
     background-color:lightgreen;
     width: 300px;
     height:150px;
+    font-size:30px;
+    padding-top:10px;
 }
 
 #winLossBox {
@@ -48,7 +50,8 @@
     color:black;
     padding-top:10px;
     padding-bottom:50px;
-    width: 100px;
+    width: 120px;
+    font-size:18px;
 }
 
 #totalScoreBox {
@@ -56,6 +59,8 @@
     width: 400px;
     height:100px;
     color:white;
+    font-size:30px;
+    padding-top:10px;
 }
 
 

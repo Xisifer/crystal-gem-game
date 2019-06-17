@@ -93,6 +93,7 @@ $("#computerNumber").html(targetScore);
         // If the user's score matches the Target Score, the user wins!!
         if (currentScore === targetScore) {
             console.log("YOU WIN!!!");
+            $("#winlose").html("WIN!!!");
             // Wins is increased by 1 
             wins++;
             // Game is reset (via Function!)
@@ -101,6 +102,7 @@ $("#computerNumber").html(targetScore);
         // If the user's score goes above the Target Score, the user loses.
         else if (currentScore > targetScore) {
             console.log("YOU LOST");
+            $("#winlose").html("LOSE...");
             // Losses is increased by 1
             losses++;
             // Game is reset (via Function!)
