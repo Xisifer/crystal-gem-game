@@ -8,6 +8,11 @@ var wins = 0;
 var losses = 0;
 
 
+
+// ==========================================
+// This is the Setup Area
+// ==========================================
+
 var currentScore = 0;
 
 // Player's current score is written to the screen
@@ -20,17 +25,17 @@ $("#losses").html(losses);
 
 // When the game is started, several things need to happen:
 //    1. A random number is generated as the Target Score (between 19 - 120)
-
 var targetScore = Math.floor(Math.random() * 101) + 19;
 console.log("This is the target score: " + targetScore);
 
+// ==========================================
+
+
 
     // 2. This random number is shown to the player
-
 $("#computerNumber").html(targetScore);
 
     // 3. Random Value is chosen for each gem and assigned to that button (between 1 - 12)
-
     function gemValueGenerator(id) {
         // Here we generate a random number for each Gem
         var gemValue = Math.floor(Math.random() * 12) + 1;
@@ -38,7 +43,6 @@ $("#computerNumber").html(targetScore);
         $(id).attr("value", gemValue);
 
     };
-
         // a. Garnet
         gemValueGenerator("#garnet");
         // b. Amethyst
@@ -47,13 +51,6 @@ $("#computerNumber").html(targetScore);
         gemValueGenerator("#pearl");
         // d. Diamond
         gemValueGenerator("#diamond");
-
-
-
-
-
-
-
 
     // When the user clicks on a gem, several things happen:
     $(".gembutton").click(function(){
@@ -112,8 +109,6 @@ $("#computerNumber").html(targetScore);
     });
 
 
-
-
     // RESET!! (This should all be wrapped in a Function)
     function reset() {
 
@@ -147,9 +142,6 @@ $("#computerNumber").html(targetScore);
     };
 
 
-
-
-
 // WHILE the player's score is less than the target score, let them keep picking new buttons
 // While the game is being played, we have a GAmeOutcome variable
 // Game has been won, game has been lost, game is still going
@@ -169,31 +161,8 @@ var playerWon = 1;
 var playerLost = 2;
 
 
-
-
-
-
-
-
-
     // If all buttons are even, and the target is odd, you can never win!!!
 
     // EViL!! Make a version so you can NEVER win!! If target number is odd, make all gem values Even!
-
-
-
-
-
-              // 3. Then give each "letterBtn" the following classes: "letter-button" "letter" "letter-button-color".
-
-    //   letterBtn.addClass("letter-button letter letter-button-color");
-
-      // 4. Then give each "letterBtn" an attribute called "data-letter", with a value eqaual to "letters[i]"
-
-    //   letterBtn.attr("data-letter", letters[i]);
-
-
-
-
 
 });
