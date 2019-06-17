@@ -127,7 +127,7 @@ $("#computerNumber").html(targetScore);
         $("#losses").html(losses);
 
         // New random Target Score is generated and assigned
-        var targetScore = Math.floor(Math.random() * 101) + 19;
+        targetScore = Math.floor(Math.random() * 101) + 19;
         console.log("This is the target score: " + targetScore);
 
         // Target Score on the screen is written to the screen
