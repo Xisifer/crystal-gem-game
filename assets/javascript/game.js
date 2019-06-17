@@ -4,12 +4,9 @@
 $(document).ready(function() {
 
 
-// var garnet;
-// var amethyst;
-// var pearl;
-// var diamond;
 var wins = 0;
 var losses = 0;
+
 
 var currentScore = 0;
 
@@ -25,8 +22,8 @@ $("#losses").html(losses);
 //    1. A random number is generated as the Target Score (between 19 - 120)
 
 var targetScore = Math.floor(Math.random() * 101) + 19;
-console.log("This is the target score: ");
-console.log(targetScore);
+console.log("This is the target score: " + targetScore);
+
 
     // 2. This random number is shown to the player
 
@@ -37,6 +34,7 @@ $("#computerNumber").html(targetScore);
     function gemValueGenerator(id) {
         // Here we generate a random number for each Gem
         var gemValue = Math.floor(Math.random() * 12) + 1;
+        // This takes the gemValue variable, targets the "value" property, and writes that variable onto it.
         $(id).attr("value", gemValue);
 
     };
@@ -60,31 +58,97 @@ $("#computerNumber").html(targetScore);
     // When the user clicks on a gem, several things happen:
     $(".gembutton").click(function(){
 
+        // The following conversation takes place:
+
+        // "Hey, .gembutton I just clicked on!"
+        // "What's up?"
+        // "You know that value that just got written onto you 
+            // by that gemValueGenerator function over there?"
+        // "You mean the function that you can't talk to?"
+        // "Yeah, that guy. Can you tell me what that value is?"
+        // "Why not just ask him yourself?"
+        // "Because Scope is a bitch and he says I can't."
+        // "Oh, yeah. Here you go."
         var gemValue = $(this).val()
+        // "Thanks!"
 
-        // 1. That gem's value is added to the Current Score
 
-        console.log("This is the Gem Value: ");
-        console.log(gemValue); 
-        // Here, we are forcing both gemValue and currentScore to be integers, since they were behaving like strings before.
+        // This prints out the gem's value.
+        console.log("The " + this.id + " gem is worth: " + gemValue);
+
+        // Here, we are forcing both gemValue and currentScore to 
+        // be integers, since they were behaving like strings before.
+            // Why? NO IDEA!
         gemValue = parseFloat(gemValue);
         currentScore = parseFloat(currentScore);
+
         // This just adds the two together.
         currentScore += gemValue;
 
-        // 2. The Current Score is updated
+        // 2. The Current Score is updated on the webpage
         $("#totalScore").html(currentScore);
-        console.log(currentScore);
+        console.log("The user's Current Score is now: " + currentScore);
+
+
+        //After all this is done, the game needs to check whether
+        // the game has been won.
+
+        // If the user's score matches the Target Score, the user wins!!
+        if (currentScore === targetScore) {
+            console.log("YOU WIN!!!");
+            // Wins is increased by 1 
+            wins++;
+            // Game is reset (via Function!)
+            reset();
+        }       
+        // If the user's score goes above the Target Score, the user loses.
+        else if (currentScore > targetScore) {
+            console.log("YOU LOST");
+            // Losses is increased by 1
+            losses++;
+            // Game is reset (via Function!)
+            reset();
+}
     });
 
 
-    
-    // If the user's score goes above the Target Score, the user loses.
-        // Game is reset (via Function!)
-        // Losses is increased by 1
-    // If the user's score matches the Target Score, the user wins!!
-        // Game is reset (via Function!)
-        // Wins is increased by 1
+
+
+    // RESET!! (This should all be wrapped in a Function)
+    function reset() {
+
+        console.log("The game is being RESET");
+
+        // User's Current Score is reset back to 0
+        currentScore = 0;
+
+        // Player's current score is written to the screen
+        $("#totalScore").html(currentScore);
+
+        // Wins is written to the screen
+        $("#wins").html(wins);
+
+        // Losses is written to the screen
+        $("#losses").html(losses);
+
+        // New random Target Score is generated and assigned
+        var targetScore = Math.floor(Math.random() * 101) + 19;
+        console.log("This is the target score: " + targetScore);
+
+        // Target Score on the screen is written to the screen
+        $("#computerNumber").html(targetScore);
+
+        // New random Gem values are generated and assigned
+        gemValueGenerator("#garnet");
+        gemValueGenerator("#amethyst");
+        gemValueGenerator("#pearl");
+        gemValueGenerator("#diamond");
+        
+    };
+
+
+
+
 
 // WHILE the player's score is less than the target score, let them keep picking new buttons
 // While the game is being played, we have a GAmeOutcome variable
@@ -100,48 +164,13 @@ $("#computerNumber").html(targetScore);
 // Set numbers equal to a meaningful name, like True, or False or something
 // then you just use that meaningful name as the conditional for your logic
 
+var gameStatus = 0;
+var playerWon = 1;
+var playerLost = 2;
 
 
 
 
-
-
-    // RESET!! (This should all be wrapped in a Function)
-    function reset() {
-        // New random Target Score is generated and assigned
-        var targetScore = Math.floor(Math.random() * 101) + 19;
-        console.log("This is the target score: ");
-        console.log(targetScore);
-
-
-        // New random Gem values are generated and assigned
-        // a. Garnet
-        gemValueGenerator("#garnet");
-        // b. Amethyst
-        gemValueGenerator("#amethyst");
-        // c. Pearl
-        gemValueGenerator("#pearl");
-        // d. Diamond
-        gemValueGenerator("#diamond");
-        
-
-        // User's Current Score is reset back to 0
-        currentScore = 0;
-
-        // Target Score on the screen is written to the screen
-        $("#computerNumber").html(targetScore);
-
-        // Player's current score is written to the screen
-        $("#totalScore").html(currentScore);
-
-        // Wins is written to the screen
-        $("#wins").html(wins);
-
-        // Losses is written to the screen
-        $("#losses").html(losses);
-
-
-    };
 
 
 
