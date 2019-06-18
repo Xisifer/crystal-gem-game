@@ -35,12 +35,15 @@ console.log("This is the target score: " + targetScore);
     // 2. This random number is shown to the player
 $("#computerNumber").html(targetScore);
 
-    // 3. Random Value is chosen for each gem and assigned to that button (between 1 - 12)
-    function gemValueGenerator(id) {
+    // 3. Random Value is chosen for each gem and assigned 
+    //to that button (between 1 - 12)
+    function gemValueGenerator(selector) {
         // Here we generate a random number for each Gem
         var gemValue = Math.floor(Math.random() * 12) + 1;
-        // This takes the gemValue variable, targets the "value" property, and writes that variable onto it.
-        $(id).attr("value", gemValue);
+        // This takes the gemValue variable, targets the "value" property, \
+        //and writes that variable onto it.
+        $(selector).attr("value", 6);
+        
 
     };
         // a. Garnet
@@ -51,6 +54,87 @@ $("#computerNumber").html(targetScore);
         gemValueGenerator("#pearl");
         // d. Diamond
         gemValueGenerator("#diamond");
+
+
+
+
+// =========================================
+    // EDGE CASE CHECKING!
+// =========================================
+    // There is a VERY remote chance that the game becomes
+    // un-winnable: If targetScore is Even and EVERY gem 
+    // is Odd (or vice-versa)
+
+   
+// This checks whether whatever-number-we-insert-here is an Even number
+// AKA, when we divide by 2, do we have a remainder of 0? AKA is it a whole number?
+    function isEven(number) {
+
+        return number % 2 === 0;
+        
+    }
+
+// This function checks the values of all 4 gems, and of targetScore. 
+// If all gems are Even, AND targetScore is Odd (is NOT Even)...
+function userCanWin(gem1,gem2,gem3,gem4,targetScore) {
+    if (isEven(gem1) 
+        && isEven(gem2) 
+        && isEven(gem3) 
+        && !isEven(targetScore) 
+        && isEven(gem4)) {
+        // then we take the value of gem4 and subtract 1 to make it Odd.
+            return gem4 - 1;        
+    }
+    // If the edge case is not true, we don't need to do anything. Return 
+    // gem4 as normal, and move along as planned.
+    return gem4;
+};
+
+// =========================================
+// This is a slightly more efficient version that's less verbose. It creates
+// an array of all the gem values, and then takes the last gem in the array and
+// subtracts 1, to make it Odd. This is more flexible, as it allows a flexible amount
+// of gems to be created for the page, and this failsafe code will still catch it.
+
+
+// function userCanWin(gems, targetScore) {
+//     var last = gems.length-1;
+//     if (gems.every(isEven) && !isEven(targetScore)) {
+//         return gems[last] - 1;
+//     }
+
+//     return gems[last];
+// }
+
+// However, I feel like the non-Array version, while less efficient, is a bit easier to
+// read and understand. For this reason, since both of these do the same thing, I'm going
+// to comment out the Array version of this. I want to make sure I'm understanding all the
+// code I write, and not just blindly trusting Black Magic That I Googled to do my bidding.
+// ===================================================
+
+
+// This takes the HTML Element with ID of #diamond, and we're running the .attr method
+// and accessing the "value" attribute of that element. Then we're taking that, 
+// and we're inserting the results of the userCanWin function (which is being run 
+// on all four gems AND targetScore) into that attribute.
+$("#diamond").attr(
+    "value", 
+    userCanWin([
+        $('#garnet').val(), 
+        $('#amethyst').val(),
+        $('#pearl').val(),
+        $('#diamond').val()],
+        targetScore
+    )
+    );
+
+
+// =========================================
+// End of Edge-Case Checking Code
+// =========================================
+
+
+
 
     // When the user clicks on a gem, several things happen:
     $(".gembutton").click(function(){
@@ -75,7 +159,8 @@ $("#computerNumber").html(targetScore);
 
         // Here, we are forcing both gemValue and currentScore to 
         // be integers, since they were behaving like strings before.
-            // Why? NO IDEA!
+            // Why? NO IDEA! This just fixes it anyway with brute force. 
+            // NUKE IT FROM ORBIT.
         gemValue = parseFloat(gemValue);
         currentScore = parseFloat(currentScore);
 
@@ -144,6 +229,12 @@ $("#computerNumber").html(targetScore);
     };
 
 
+
+
+// LEFTOVER BRAINSTORMING NOTES
+// ============================
+// While-Loop?
+
 // WHILE the player's score is less than the target score, let them keep picking new buttons
 // While the game is being played, we have a GAmeOutcome variable
 // Game has been won, game has been lost, game is still going
@@ -158,9 +249,9 @@ $("#computerNumber").html(targetScore);
 // Set numbers equal to a meaningful name, like True, or False or something
 // then you just use that meaningful name as the conditional for your logic
 
-var gameStatus = 0;
-var playerWon = 1;
-var playerLost = 2;
+// var gameStatus = 0;
+// var playerWon = 1;
+// var playerLost = 2;
 
 
     // If all buttons are even, and the target is odd, you can never win!!!
