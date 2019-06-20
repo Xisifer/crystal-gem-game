@@ -42,7 +42,7 @@ $("#computerNumber").html(targetScore);
         var gemValue = Math.floor(Math.random() * 12) + 1;
         // This takes the gemValue variable, targets the "value" property, \
         //and writes that variable onto it.
-        $(selector).attr("value", 6);
+        $(selector).attr("value", gemValue);
         
 
     };
