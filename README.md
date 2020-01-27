@@ -1,4 +1,4 @@
-# unit-4-game
+# Crystal Gem Game
 
 A simple guessing game that randomly reassigns HTML attribute values and selects a target value. The player must perform simple arithmetic to press the buttons with the correct numbers in order to match the target value.
 
